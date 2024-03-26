@@ -20,7 +20,7 @@ public class OrderDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_detail_id")
-    private int orderDetailId;
+    private int id;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "order_id")

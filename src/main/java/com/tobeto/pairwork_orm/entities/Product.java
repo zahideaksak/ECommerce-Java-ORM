@@ -20,7 +20,7 @@ public class Product {
     @Column(name="product_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int productId;
+    private int id;
 
     @Column(name="package_height")
     private String packageHeight;
@@ -50,4 +50,8 @@ public class Product {
 
     @ManyToMany(mappedBy = "products")
     private Set<Seller> sellers = new HashSet<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 }

@@ -29,4 +29,7 @@ public class Customer extends User{
     @Column(name="last_name")
     private String lastName;
 
+    @OneToOne
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 }

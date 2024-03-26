@@ -37,6 +37,10 @@ public class Order {
     @JoinColumn(name="seller_id")
     private Seller seller;
 
+    @OneToOne
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
+
     @ManyToOne
     @JoinColumn(name="shipping_address_id")
     private ShippingAddress shippingAddress;

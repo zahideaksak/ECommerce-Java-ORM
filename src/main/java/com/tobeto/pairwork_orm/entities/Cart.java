@@ -1,26 +1,30 @@
 package com.tobeto.pairwork_orm.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
 
-@Table(name="roles")
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role {
-
+@Table(name = "carts")
+public class Cart {
+    @Column(name = "cart_id")
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
     private int id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "name", length = 20)
-    private ERole name;
+    @OneToMany(mappedBy = "cart")
+    @JsonIgnore
+    private List<Product> products;
+
+    @OneToOne(mappedBy = "cart", cascade = CascadeType.ALL)
+    private Customer customer;
 }
